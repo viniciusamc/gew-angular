@@ -15,6 +15,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { MatIconModule } from '@angular/material/icon';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent, InputComponent],
   imports: [
@@ -30,6 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
     NgxMaskDirective,
     NgxMaskPipe,
     MatIconModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent],

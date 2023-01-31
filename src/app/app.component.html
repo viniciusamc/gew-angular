@@ -3,7 +3,7 @@
   <h1>Junte-se a 12 milhões de pessoas!</h1>
 </div>
 
-<form action="" class="container-form">
+<form action="" class="container-form" #f="ngForm">
   <fieldset>
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>
@@ -29,26 +29,29 @@
     <mat-form-field>
       <input
         matInput
-        name="zipCode"
+        name="cep"
         placeholder="Código Postal"
-        mask="00000-000"
+        mask="000000000"
+        ngModel
+        #cep="ngModel"
+        (blur)="consultaCep(applyFilter($event), f)"
       />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Endereço</mat-label>
-      <input matInput />
+      <input matInput ngModel name="logradouro" #logradouro="ngModel" />
     </mat-form-field>
 
     <div class="col-2">
       <mat-form-field appearance="fill" class="input-col">
         <mat-label>Cidade</mat-label>
-        <input matInput />
+        <input matInput ngModel name="cidade" #cidade="ngModel" />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="input-col">
         <mat-label>Estado</mat-label>
-        <input matInput />
+        <input matInput ngModel name="estado" #estado="ngModel" />
       </mat-form-field>
     </div>
 
