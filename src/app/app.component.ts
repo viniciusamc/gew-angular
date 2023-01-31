@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
   title = 'gew';
   email = new FormControl('');
+  hide = true;
 
   getErrorMessage() {
     return this.email.hasError('required')

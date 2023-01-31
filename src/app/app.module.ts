@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent, InputComponent],
@@ -28,6 +29,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     MatNativeDateModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    MatIconModule,
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent],

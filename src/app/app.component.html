@@ -1,32 +1,90 @@
-<mat-form-field appearance="fill">
-  <mat-label>Nome</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Enter your email</mat-label>
-  <input matInput [formControl]="email" />
-  <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
-</mat-form-field>
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date" />
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-<mat-form-field>
-  <input matInput name="zipCode" placeholder="Zip Code" mask="00000-000" />
-</mat-form-field>
+<div class="main-desc">
+  <img src="../assets/login.svg" alt="" />
+  <h1>Junte-se a 12 milhões de pessoas!</h1>
+</div>
 
-<mat-form-field appearance="fill">
-  <mat-label>Endereço</mat-label>
-  <input matInput />
-</mat-form-field>
+<form action="" class="container-form">
+  <fieldset>
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput />
+    </mat-form-field>
 
-<mat-form-field appearance="fill">
-  <mat-label>Cidade</mat-label>
-  <input matInput />
-</mat-form-field>
+    <mat-form-field appearance="fill" class="custom-input">
+      <mat-label>E-mail</mat-label>
+      <input matInput [formControl]="email" />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
 
-<mat-form-field appearance="fill">
-  <mat-label>Estado</mat-label>
-  <input matInput />
-</mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        placeholder="Data de Nascimento"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        name="zipCode"
+        placeholder="Código Postal"
+        mask="00000-000"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Endereço</mat-label>
+      <input matInput />
+    </mat-form-field>
+
+    <div class="col-2">
+      <mat-form-field appearance="fill" class="input-col">
+        <mat-label>Cidade</mat-label>
+        <input matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="input-col">
+        <mat-label>Estado</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
+
+    <div class="col-2">
+      <mat-form-field appearance="fill" class="input-col">
+        <mat-label>Senha</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="input-col">
+        <mat-label>Confirme sua senha</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button extended class="btn-form">
+      Cadastrar
+      <mat-icon>arrow_right_alt</mat-icon>
+    </button>
+  </fieldset>
+</form>
