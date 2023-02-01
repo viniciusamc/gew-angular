@@ -3,24 +3,28 @@
   <h1>Junte-se a 12 milhões de pessoas!</h1>
 </div>
 
-<form action="" class="container-form" #f="ngForm">
+<form action="post" class="container-form" #f="ngForm">
   <fieldset>
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>
-      <input matInput />
+      <input matInput required name="name" ngModel #name="ngModel" />
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="custom-input">
       <mat-label>E-mail</mat-label>
-      <input matInput [formControl]="email" />
+      <input matInput required name="email" ngModel #email="ngModel" />
       <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <input
         matInput
+        required
         [matDatepicker]="picker"
         placeholder="Data de Nascimento"
+        name="birth"
+        ngModel
+        #birth="ngModel"
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -31,7 +35,7 @@
         matInput
         name="cep"
         placeholder="Código Postal"
-        mask="000000000"
+        mask="00000-000"
         ngModel
         #cep="ngModel"
         (blur)="consultaCep(applyFilter($event), f)"
@@ -40,25 +44,32 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Endereço</mat-label>
-      <input matInput ngModel name="logradouro" #logradouro="ngModel" />
+      <input matInput name="logradouro" ngModel #logradouro="ngModel" />
     </mat-form-field>
 
     <div class="col-2">
       <mat-form-field appearance="fill" class="input-col">
         <mat-label>Cidade</mat-label>
-        <input matInput ngModel name="cidade" #cidade="ngModel" />
+        <input matInput ngModel name="cidade" #cidade="ngModel" required />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="input-col">
         <mat-label>Estado</mat-label>
-        <input matInput ngModel name="estado" #estado="ngModel" />
+        <input matInput ngModel name="estado" #estado="ngModel" required />
       </mat-form-field>
     </div>
 
     <div class="col-2">
       <mat-form-field appearance="fill" class="input-col">
         <mat-label>Senha</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" />
+        <input
+          required
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          name="password"
+          ngModel
+          #password="ngModel"
+        />
         <button
           mat-icon-button
           matSuffix
@@ -72,7 +83,14 @@
 
       <mat-form-field appearance="fill" class="input-col">
         <mat-label>Confirme sua senha</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" />
+        <input
+          required
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          name="confirmPassword"
+          ngModel
+          #confirmPassword="ngModel"
+        />
         <button
           mat-icon-button
           matSuffix
@@ -85,7 +103,13 @@
       </mat-form-field>
     </div>
 
-    <button mat-raised-button extended class="btn-form">
+    <button
+      type="submit"
+      mat-raised-button
+      extended
+      class="btn-form"
+      (click)="onSubmit(f)"
+    >
       Cadastrar
       <mat-icon>arrow_right_alt</mat-icon>
     </button>

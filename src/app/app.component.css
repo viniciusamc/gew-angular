@@ -57,6 +57,10 @@ mat-form-field {
   width: 90%;
 }
 
+.mat-mdc-form-field-error {
+  color: white !important;
+}
+
 .input-col {
   width: 40%;
 }
